@@ -1,0 +1,10 @@
+n m q opt
+a line with the n obj.func. coefficients
+a line for each m; n coefficients for <= constraints 
+a line with rhs of <= constraints
+a line for each q; n coefficients for >= constraints
+a line with rhs of >= constraints
+
+
+(this is for files in class1 - class9)
+(for mkp, q=0)
