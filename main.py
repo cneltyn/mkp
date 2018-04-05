@@ -1,8 +1,9 @@
 from Greedy_solution import greedy_solution
 from Random_solution import random_solution
-
+import Neighborhood
 from Item import Item
 from Knapsack import Knapsack
+from TabuSearch import TabuList, TabuSearch
 
 def items_from_file(filename):
     items = []
@@ -27,5 +28,9 @@ def bag_from_file(filename):
     return (items_from_file(filename), *constraints)
 
 if __name__ == '__main__':
-    bag = Knapsack(*bag_from_file('instances_shared/class5/250-10-03.txt'))
-    bag.optimization(greedy_solution)
+    bag = Knapsack(*bag_from_file('instances_shared/class1/100-5-01.txt'), tabu_list=TabuList(200))
+    # local search heuristic
+    bag.optimization_local(greedy_solution, Neighborhood.best_improving, Neighborhood.first_improving_neighborhood)
+    # Tabu metaheuristic
+    # bag.optimization_tabu(greedy_solution, TabuSearch(300), Neighborhood.first_improving_neighborhood)
+    
